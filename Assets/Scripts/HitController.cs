@@ -6,14 +6,22 @@ public class HitController : MonoBehaviour
 {
     [SerializeField]
     private GameObject punchSlayer;
+    private PlayerController GetPlayer;
 
-
-    private void OnTriggerEnter2D(Collider2D target) // Cambié "onTriggerEnter2D" a "OnTriggerEnter2D"
+    private void Awake()
     {
-        if (target.tag == TagManager.Tags.EnemyTag || target.tag == TagManager.Tags.PlayerTag) // Cambié "Collision" a "target"
+        GetPlayer = GameObject.FindGameObjectWithTag(TagManager.Tags.PlayerTag).GetComponent<PlayerController>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.tag == TagManager.Tags.PlayerTag && !GetPlayer.isDefending)
+        {
+            Instantiate(punchSlayer, new Vector3(transform.position.x, transform.position.y, -4.0f), Quaternion.identity);
+        }
+        else if (target.tag == TagManager.Tags.EnemyTag)
         {
             Instantiate(punchSlayer, new Vector3(transform.position.x, transform.position.y, -4.0f), Quaternion.identity);
         }
     }
 }
-

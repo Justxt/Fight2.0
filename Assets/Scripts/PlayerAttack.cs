@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
     void ComboAttack()
     {
         // Golpe
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (currentComboState == ComboState.PUNCH4 || currentComboState == ComboState.kick)
             {
@@ -75,7 +75,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         // Patada
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             if (currentComboState == ComboState.PUNCH4 || currentComboState == ComboState.kick)
             {
@@ -105,31 +105,38 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public void ActivatePunch1() {
+    public void ActivatePunch1()
+    {
         punch1AttackPoint.SetActive(true);
     }
 
-    public void ActivatePunch2() {
+    public void ActivatePunch2()
+    {
         punch2AttackPoint.SetActive(true);
     }
 
-    public void ActivateKick() {
+    public void ActivateKick()
+    {
         kickAttackPoint.SetActive(true);
     }
 
-    public void DesactivePunch1() {
+    public void DesactivePunch1()
+    {
         punch1AttackPoint.SetActive(false);
     }
 
-    public void DesactivePunch2() {
+    public void DesactivePunch2()
+    {
         punch2AttackPoint.SetActive(false);
     }
 
-    public void DesactiveKick() {
+    public void DesactiveKick()
+    {
         kickAttackPoint.SetActive(false);
     }
 
-    public void DesactivateAllAttack() {
+    public void DesactivateAllAttack()
+    {
         punch1AttackPoint.SetActive(false);
         punch2AttackPoint.SetActive(false);
         kickAttackPoint.SetActive(false);

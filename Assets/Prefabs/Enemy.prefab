@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8899678013231250917}
   - component: {fileID: 8016350543427870342}
   - component: {fileID: 2557648231663593883}
+  - component: {fileID: 2837504162759611724}
   m_Layer: 0
   m_Name: KickAttack
   m_TagString: KickAttack
@@ -95,6 +96,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
+--- !u!114 &2837504162759611724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525047016885623017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c8b0b76e58a6942a67b5cac48a2593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchSlayer: {fileID: 8340286709317341669, guid: 2d7e41f9b9884564abebfdfe39e001e4, type: 3}
 --- !u!1 &828532718282914345
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +120,7 @@ GameObject:
   - component: {fileID: 2921961710932195932}
   - component: {fileID: 1495110776131131416}
   - component: {fileID: 1747773930785532783}
+  - component: {fileID: 165780209513664094}
   m_Layer: 0
   m_Name: Punch1Attack
   m_TagString: PunchAttack
@@ -190,6 +205,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.12
+--- !u!114 &165780209513664094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828532718282914345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c8b0b76e58a6942a67b5cac48a2593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchSlayer: {fileID: 8340286709317341669, guid: 2d7e41f9b9884564abebfdfe39e001e4, type: 3}
 --- !u!1 &3307002968731582289
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +229,7 @@ GameObject:
   - component: {fileID: 6053612927501609630}
   - component: {fileID: 6679071757676554832}
   - component: {fileID: 2008733350231051118}
+  - component: {fileID: 7467189082046097985}
   m_Layer: 0
   m_Name: Punch2Attack
   m_TagString: PunchAttack
@@ -285,6 +314,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.12
+--- !u!114 &7467189082046097985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307002968731582289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c8b0b76e58a6942a67b5cac48a2593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchSlayer: {fileID: 8340286709317341669, guid: 2d7e41f9b9884564abebfdfe39e001e4, type: 3}
 --- !u!1 &5074246170098511275
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,8 +340,10 @@ GameObject:
   - component: {fileID: 4768492004046048952}
   - component: {fileID: 5987613284887260496}
   - component: {fileID: 9151977218410531642}
+  - component: {fileID: 3013401515966288426}
   - component: {fileID: 7381073720172892417}
   - component: {fileID: 8239771189476201303}
+  - component: {fileID: 3050596420870652910}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -457,9 +501,23 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.10045725, y: -0.41567588}
-  m_Size: {x: 0.8190855, y: 2.9268193}
+  m_Offset: {x: -0.12656128, y: -0.41567588}
+  m_Size: {x: 0.7668774, y: 2.9268193}
   m_Direction: 0
+--- !u!114 &3013401515966288426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5074246170098511275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4c2a8d15e5b194783ea38bd7649c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100
 --- !u!114 &7381073720172892417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,9 +534,12 @@ MonoBehaviour:
   attack_Distance: 2
   chasePlayerAfterAttack: 1.7
   defaultAttackTime: 0.8
-  punch1AttackPoint: {fileID: 0}
-  punch2AttackPoint: {fileID: 0}
-  kickAttackPoint: {fileID: 0}
+  punch1AttackPoint: {fileID: 828532718282914345}
+  punch2AttackPoint: {fileID: 3307002968731582289}
+  kickAttackPoint: {fileID: 525047016885623017}
+  punchDamage: 10
+  kickDamage: 20
+  isDie: 0
 --- !u!114 &8239771189476201303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,3 +552,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4ba3bd1baea5042aa7a9063d282d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3050596420870652910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5074246170098511275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c8b0b76e58a6942a67b5cac48a2593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchSlayer: {fileID: 8340286709317341669, guid: 2d7e41f9b9884564abebfdfe39e001e4, type: 3}

@@ -8,6 +8,10 @@ TagManager:
   - Enemy
   - PunchAttack
   - KickAttack
+  - PlayerHealthBar
+  - JordanHealthBar
+  - EnemyBar
+  - PlayerBar
   layers:
   - Default
   - TransparentFX

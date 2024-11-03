@@ -30,21 +30,32 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private GameObject punch1AttackPoint, punch2AttackPoint, kickAttackPoint;
 
+    public float punchDamage;
+    public float kickDamage;
+    public bool isDie;
+
+    private PlayerController GetPlayer;
+    private Health myHealth;
+
+
 
     private void Awake()
     {
         playerCollider = GameObject.FindGameObjectWithTag(TagManager.Tags.PlayerTag).GetComponent<Collider2D>();
-
         enemyAnim = GetComponent<CharacterAnimation>();
         myBody = GetComponent<Rigidbody2D>();
         playerTarget = GameObject.FindWithTag(TagManager.Tags.PlayerTag).transform;
-
+        myHealth = GetComponent<Health>();
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), playerCollider);
+
     }
+
 
     // Start is called before the first frame update
     void Start()
     {
+
+        GetPlayer = GameObject.FindGameObjectWithTag(TagManager.Tags.PlayerTag).GetComponent<PlayerController>();
         followPlayer = true;
         currentAttackTime = defaultAttackTime;
     }
@@ -52,7 +63,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         FancingToTarget();
+        deadCheck();
     }
 
     private void FixedUpdate()
@@ -63,7 +76,7 @@ public class EnemyController : MonoBehaviour
 
     void FollowPlayer()
     {
-        if (!followPlayer) return;
+        if (!followPlayer || isDie) return;
 
         float distanceToPlayer = Mathf.Abs(transform.position.x - playerTarget.position.x);
 
@@ -95,15 +108,13 @@ public class EnemyController : MonoBehaviour
 
     void AttackPlayer()
     {
-        if (!attackPlayer) return;
+        if (!attackPlayer || isDie) return;
 
         currentAttackTime += Time.deltaTime;
-
-        // Realiza un ataque solo si ha pasado el tiempo necesario
         if (currentAttackTime >= defaultAttackTime)
         {
             Attack(UnityEngine.Random.Range(0, 5));
-            currentAttackTime = 0f;  // Reinicia el temporizador
+            currentAttackTime = 0f;
         }
 
         if (Mathf.Abs(transform.position.x - playerTarget.position.x) > attack_Distance + chasePlayerAfterAttack)
@@ -116,6 +127,7 @@ public class EnemyController : MonoBehaviour
 
     void FancingToTarget()
     {
+        if (isDie) return;
         if (playerTarget.position.x < transform.position.x)
         {
             Vector3 theScale = transform.localScale;
@@ -191,14 +203,28 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (isDie) return;
         if (collision.gameObject.CompareTag("PunchAttack"))
         {
             enemyAnim.Hurt();
+            myHealth.health -= GetPlayer.punchDamage;
         }
 
         if (collision.gameObject.CompareTag("KickAttack"))
         {
             enemyAnim.Hurt();
+            myHealth.health -= GetPlayer.kickDamage;
+        }
+    }
+
+    void deadCheck()
+    {
+        if (isDie) return;
+        if (myHealth.health <= 0)
+        {
+            isDie = true;
+            enemyAnim.Die(isDie);
+
         }
     }
 }

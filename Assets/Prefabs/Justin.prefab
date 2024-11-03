@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6849800444760521178}
   - component: {fileID: 5575698705730612078}
   - component: {fileID: 6741734419333995646}
+  - component: {fileID: 5687274631694605570}
   m_Layer: 0
   m_Name: Punch1Attack
   m_TagString: PunchAttack
@@ -95,6 +96,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &5687274631694605570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121655406540410811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c8b0b76e58a6942a67b5cac48a2593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchSlayer: {fileID: 8340286709317341669, guid: 2d7e41f9b9884564abebfdfe39e001e4, type: 3}
 --- !u!1 &5930443271083735335
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +120,7 @@ GameObject:
   - component: {fileID: 5566748964944525839}
   - component: {fileID: 3092075666732024340}
   - component: {fileID: 8336234319327397449}
+  - component: {fileID: 5610435489012369070}
   m_Layer: 0
   m_Name: KickAttack
   m_TagString: KickAttack
@@ -190,6 +205,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &5610435489012369070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5930443271083735335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c8b0b76e58a6942a67b5cac48a2593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchSlayer: {fileID: 8340286709317341669, guid: 2d7e41f9b9884564abebfdfe39e001e4, type: 3}
 --- !u!1 &6371250761483123022
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,9 +232,10 @@ GameObject:
   - component: {fileID: 2082575627554631681}
   - component: {fileID: 8551895250013237824}
   - component: {fileID: 3455435880894580455}
-  - component: {fileID: 1008936192503789232}
-  - component: {fileID: 4975541495246743539}
-  - component: {fileID: 6040385616712350841}
+  - component: {fileID: 9021470381521607701}
+  - component: {fileID: 6907565047302433219}
+  - component: {fileID: 7141492400156321986}
+  - component: {fileID: 1608109031801783836}
   m_Layer: 0
   m_Name: Justin
   m_TagString: Player
@@ -402,33 +431,7 @@ CircleCollider2D:
   m_Offset: {x: -0.01, y: -1.65}
   serializedVersion: 2
   m_Radius: 0.26241302
---- !u!114 &1008936192503789232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6371250761483123022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab4ba3bd1baea5042aa7a9063d282d64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4975541495246743539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6371250761483123022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975f55a9135ae6443941a89c98824053, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  forceJump: 2
---- !u!114 &6040385616712350841
+--- !u!114 &9021470381521607701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -443,6 +446,50 @@ MonoBehaviour:
   punch1AttackPoint: {fileID: 3121655406540410811}
   punch2AttackPoint: {fileID: 8729513134664402784}
   kickAttackPoint: {fileID: 5930443271083735335}
+--- !u!114 &6907565047302433219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371250761483123022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975f55a9135ae6443941a89c98824053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  forceJump: 0
+  isDefending: 0
+  punchDamage: 10
+  kickDamage: 20
+  isDie: 0
+  healthBar: {fileID: 0}
+--- !u!114 &7141492400156321986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371250761483123022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c8b0b76e58a6942a67b5cac48a2593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchSlayer: {fileID: 8340286709317341669, guid: 2d7e41f9b9884564abebfdfe39e001e4, type: 3}
+--- !u!114 &1608109031801783836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371250761483123022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4ba3bd1baea5042aa7a9063d282d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8729513134664402784
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +501,7 @@ GameObject:
   - component: {fileID: 5472959828557422683}
   - component: {fileID: 4719074441166206523}
   - component: {fileID: 4841206208124972131}
+  - component: {fileID: 4450748196842692133}
   m_Layer: 0
   m_Name: Punch2Attack
   m_TagString: PunchAttack
@@ -538,3 +586,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &4450748196842692133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8729513134664402784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c8b0b76e58a6942a67b5cac48a2593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchSlayer: {fileID: 8340286709317341669, guid: 2d7e41f9b9884564abebfdfe39e001e4, type: 3}
